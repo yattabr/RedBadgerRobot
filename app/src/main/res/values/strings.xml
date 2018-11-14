@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Red Badger Robot</string>
+
+    <string-array name="orientation">
+        <item>North (N)</item>
+        <item>South (S)</item>
+        <item>East (E)</item>
+        <item>West (W)</item>
+    </string-array>
+
+</resources>
