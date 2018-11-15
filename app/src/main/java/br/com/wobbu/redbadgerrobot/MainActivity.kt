@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity(), MainView {
         btClean.setOnClickListener(cleanClick)
     }
 
+    // Presenter send return to this method to update the view.
     override fun resultRobotMove(result: String) {
         txtResult.text = result
         resutView.visibility = View.VISIBLE
@@ -57,6 +58,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
 //    ===========---------- ON CLICK -----------================
 
+    // Click prepare the move to presenter
     var sendClick = View.OnClickListener {
         var move = Move()
 
@@ -80,27 +82,32 @@ class MainActivity : AppCompatActivity(), MainView {
         presenter.executeMove(move, finalInstruction)
     }
 
+    // Move to left when clicked
     var leftClick = View.OnClickListener {
         instruction += "L "
         editInstruction.setText(instruction)
 
     }
 
+    // Move to right when clicked
     var rightClick = View.OnClickListener {
         instruction += "R "
         editInstruction.setText(instruction)
 
     }
 
+    // Move to forward when clicked
     var topClick = View.OnClickListener {
         instruction += "F "
         editInstruction.setText(instruction)
     }
 
+    // Hide the result view
     var hideViewClick = View.OnClickListener {
         resutView.visibility = View.GONE
     }
 
+    // Clean all instructions
     var cleanClick = View.OnClickListener {
         editInstruction.setText("")
         instruction = ""
