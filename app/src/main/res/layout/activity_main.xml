@@ -126,11 +126,29 @@
                     android:layout_marginTop="20dp"
                     android:text="Instrunction Result" />
 
-                <EditText
-                    android:id="@+id/edit_instruction"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content">
 
+                    <EditText
+                        android:id="@+id/edit_instruction"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/bt_clean" />
+
+                    <Button
+                        android:id="@+id/bt_clean"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@color/redBadger"
+                        android:text="Clean"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
             </LinearLayout>
 
             <Button

@@ -73,7 +73,7 @@ class MainPresenter(var mainView: MainView) {
 
     fun executeMove(move: Move, instuctions: String) {
         var res = ""
-        if(instuctions.length > 5){
+        if(instuctions.length > 100){
             mainView.resultRobotMove("All instruction strings will be less than 100 characters in length")
             return
         }

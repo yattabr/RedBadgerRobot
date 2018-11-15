@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity(), MainView {
     lateinit var btLeft: ImageButton
     lateinit var btRight: ImageButton
     lateinit var btSend: Button
+    lateinit var btClean: Button
     lateinit var txtResult: TextView
     lateinit var resutView: RelativeLayout
 
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity(), MainView {
         btLeft = findViewById(R.id.bt_left)
         btRight = findViewById(R.id.bt_right)
         btSend = findViewById(R.id.bt_send)
+        btClean = findViewById(R.id.bt_clean)
         txtResult = findViewById(R.id.txt_result)
         resutView = findViewById(R.id.result_view)
 
@@ -45,7 +47,15 @@ class MainActivity : AppCompatActivity(), MainView {
         btRight.setOnClickListener(rightClick)
         btLeft.setOnClickListener(leftClick)
         resutView.setOnClickListener(hideViewClick)
+        btClean.setOnClickListener(cleanClick)
     }
+
+    override fun resultRobotMove(result: String) {
+        txtResult.text = result
+        resutView.visibility = View.VISIBLE
+    }
+
+//    ===========---------- ON CLICK -----------================
 
     var sendClick = View.OnClickListener {
         var move = Move()
@@ -91,9 +101,8 @@ class MainActivity : AppCompatActivity(), MainView {
         resutView.visibility = View.GONE
     }
 
-
-    override fun resultRobotMove(result: String) {
-        txtResult.text = result
-        resutView.visibility = View.VISIBLE
+    var cleanClick = View.OnClickListener {
+        editInstruction.setText("")
+        instruction = ""
     }
 }
