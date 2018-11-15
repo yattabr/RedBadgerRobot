@@ -17,7 +17,7 @@ class MainPresenter(var mainView: MainView) {
 //        var lastMove = moves[moves.size - 1]
 //        var heading = lastMove.heading
 
-        var heading = move.heading
+        var heading = move.heading + direction
 
         if (heading < 0) {
             heading = 3
@@ -26,11 +26,22 @@ class MainPresenter(var mainView: MainView) {
         }
 
         move.heading = directions.indexOf(directions[heading])
+        move.direction = directions[heading]
 
         addMove(move)
     }
 
     fun move(move: Move) {
+        if (moves.isEmpty()) {
+            var newMove = Move()
+            newMove.x = 0
+            newMove.y = 0
+            newMove.heading = 0
+            newMove.lost = false
+
+            moves.add(move)
+        }
+
         var lastMove = moves[moves.size - 1]
 
         if (lastMove.heading.equals("N")) {
@@ -62,8 +73,11 @@ class MainPresenter(var mainView: MainView) {
 
     fun executeMove(move: Move, instuctions: String) {
         var res = ""
-//        if (instuctions.matches("L/R/F".toRegex())) {
-        instuctions.split(",").forEach {
+        if(instuctions.length > 5){
+            mainView.resultRobotMove("All instruction strings will be less than 100 characters in length")
+            return
+        }
+        instuctions.split(" ").forEach {
             if (it.equals("L")) {
                 turnDirections(move, -1)
             } else if (it.equals("R")) {
@@ -78,7 +92,7 @@ class MainPresenter(var mainView: MainView) {
         if (lastMove.lost) {
             res = "LOST"
         } else {
-            res = "${lastMove.x} ${lastMove.y} ${lastMove.heading}"
+            res = "${lastMove.x} ${lastMove.y} ${lastMove.direction}"
         }
 
         mainView.resultRobotMove(res)

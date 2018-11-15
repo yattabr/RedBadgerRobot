@@ -6,5 +6,6 @@ class Move {
     var y: Int = 0
     var heading: Int = 0
     var lost: Boolean = false
+    var direction: String = ""
 
 }

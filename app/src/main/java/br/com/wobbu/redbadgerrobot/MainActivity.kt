@@ -50,8 +50,19 @@ class MainActivity : AppCompatActivity(), MainView {
     var sendClick = View.OnClickListener {
         var move = Move()
 
-        move.x = editCoordinateX.text.toString().toInt()
-        move.y = editCoordinateY.text.toString().toInt()
+        var x = editCoordinateX.text.toString()
+        var y = editCoordinateY.text.toString()
+
+        if (x.isEmpty()) {
+            x = "0"
+        }
+
+        if (y.isEmpty()) {
+            y = "0"
+        }
+
+        move.x = x.toInt()
+        move.y = y.toInt()
         move.heading = spinnerOrientation.selectedItemPosition
 
         var finalInstruction = editInstruction.text.toString()
@@ -60,19 +71,19 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     var leftClick = View.OnClickListener {
-        instruction += "L,"
+        instruction += "L "
         editInstruction.setText(instruction)
 
     }
 
     var rightClick = View.OnClickListener {
-        instruction += "R,"
+        instruction += "R "
         editInstruction.setText(instruction)
 
     }
 
     var topClick = View.OnClickListener {
-        instruction += "F,"
+        instruction += "F "
         editInstruction.setText(instruction)
     }
 
